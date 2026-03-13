@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": ".",               // deploy செய்யும் folder (project root)
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

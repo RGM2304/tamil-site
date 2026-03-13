@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <title>எதிர்ச்சொல் </title>
+  <style>
+    body {
+      font-family: "Latha", Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 50%;
+      margin: auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background: #2196f3;
+      color: white;
+    }
+    select {
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #check-btn {
+      background: #4caf50;
+      color: white;
+    }
+    #back-btn {
+      background: #f44336;
+      color: white;
+    }
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .correct {
+      background: #c8e6c9;
+    }
+    .wrong {
+      background: #ffcdd2;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>எதிர்ச்சொல்</h2>
+
+  <table id="quizTable">
+    <thead>
+      <tr>
+        <th>எண்</th>
+        <th>சொல்</th>
+        <th>எதிர்ச்சொல் தேர்வு</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- JS மூலம் சேர்க்கப்படும் -->
+    </tbody>
+  </table>
+
+  <div class="btn-container">
+    <button id="check-btn" onclick="checkAnswers()">மதிப்பெண் காண</button>
+    <button id="back-btn">⬅️ Back</button>
+  </div>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    const quizData = [
+      { word: "நன்று", answer: "வரியவர்" },
+      { word: "புகழ்", answer: "நட்டு" },
+      { word: "பொய்மை", answer: "சோர்வு" },
+      { word: "திண்மை", answer: "மூடர்" },
+      { word: "ஒற்றுமை", answer: "பினக்கம்" },
+      { word: "சான்றோர்", answer: "மென்மை" },
+      { word: "உற்சாகம்", answer: "இழிவு" },
+      { word: "இணக்கம்", answer: "வேற்றுமை" },
+      { word: "செல்வர்", answer: "துதி" },
+      { word: "பூசல்", answer: "வாய்மை" }
+    ];
+
+    const allOptions = [
+      "வரியவர்","நட்டு","சோர்வு","மூடர்","பினக்கம்",
+      "மென்மை","இழிவு","வேற்றுமை","துதி","வாய்மை",
+      "வெற்றி","அழகு","அன்பு","பொய்","அமைதி"
+    ];
+
+    let tableBody = document.querySelector("#quizTable tbody");
+
+    quizData.forEach((q, index) => {
+      let row = document.createElement("tr");
+
+      // சீரியல் நம்பர்
+      let numCell = document.createElement("td");
+      numCell.innerText = index + 1;
+      row.appendChild(numCell);
+
+      // சொல்
+      let wordCell = document.createElement("td");
+      wordCell.innerText = q.word;
+      row.appendChild(wordCell);
+
+      // எதிர்ச்சொல் dropdown
+      let selectCell = document.createElement("td");
+      let select = document.createElement("select");
+      let defaultOpt = document.createElement("option");
+      defaultOpt.text = "தேர்வு செய்";
+      defaultOpt.value = "";
+      select.add(defaultOpt);
+
+      allOptions.forEach(opt => {
+        let option = document.createElement("option");
+        option.value = opt;
+        option.text = opt;
+        select.add(option);
+      });
+
+      selectCell.appendChild(select);
+      row.appendChild(selectCell);
+      tableBody.appendChild(row);
+    });
+
+    function checkAnswers() {
+      let rows = document.querySelectorAll("#quizTable tbody tr");
+      let score = 0;
+
+      rows.forEach((row, i) => {
+        let select = row.querySelector("select");
+        let selectedValue = select.value;
+        if(selectedValue === quizData[i].answer) {
+          row.classList.add("correct");
+          row.classList.remove("wrong");
+          score++;
+        } else {
+          row.classList.add("wrong");
+          row.classList.remove("correct");
+        }
+      });
+
+      document.getElementById("result").innerText = 
+        `உங்கள் மதிப்பெண்: ${score} / ${quizData.length}`;
+    }
+
+    // Back Button செயல்பாடு
+    document.getElementById("back-btn").addEventListener("click", () => {
+      // முந்தைய பக்கம் செல்ல
+      window.location.href = "chooseanswer.html";
+            // அல்லது உங்கள் பாடங்கள் பக்கத்திற்கு போக URL கொடுக்கலாம்:
+      // window.location.href = "chooseanswer.html";
+    });
+  </script>
+
+</body>
+</html>

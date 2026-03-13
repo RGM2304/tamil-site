@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>தமிழ்த்தேனீ | Tamil Language Learning Institute</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Tamil:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>தமிழ்த்தேனீ</h2>
+                <span class="subtitle">தமிழ் கற்போம் வளர்வோம்</span>
+            </div> 
+            <br>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">முகப்பு</a></li>
+                <li><a href="#chooseanswer.html" class="nav-link">பாடங்கள்</a></li>
+                <li><a href="Match the following words.html" class="nav-link">வகுப்பு 1</a></li>
+                <li><a href="Antonym.html" class="nav-link">வகுப்பு 2</a></li>
+                <li><a href="chooseanswer.html" class="nav-link">வகுப்பு 3</a></li>
+                <li><a href="chooseanswer.html" class="nav-link">வகுப்பு 4</a></li>
+                <li><a href="chooseanswer.html" class="nav-link">வகுப்பு 5</a></li>
+                <li><a href="chooseanswer.html" class="nav-link">வகுப்பு 6</a></li>
+                <li><a href="chooseanswer.html" class="nav-link">வகுப்பு 7</a></li>
+                <li><a href="chooseanswer.html" class="nav-link">வகுப்பு 8</a></li>
+                <li><a href="chooseanswer.html" class="nav-link">வகுப்பு 9</a></li>
+                <li><a href="tel:+914448973510" class="nav-link cta-button">📞 அழைக்க</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Notice Banner -->
+    <div class="notice-banner"id="home">
+    
+        <div class="container">
+            <p><strong>கவனிக்க:</strong> சேர்க்கைக்கும் ஆன்லைன் அணுகலுக்கும் தயவுசெய்து 
+            <a href="tel:+914448973510">+914448973510</a> என்ற எண்ணிற்கு அழைக்கவும்</p>
+        </div>
+   </div>
+
+<body>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar">0%</div>
+  </div>
+  <div class="quiz-title">
+    <h1 style="text-align: center;color: blue;">பாடம் 1: இந்தியா பற்றிய பொதுத் தகவல்கள்</h1>
+    <p style="text-align: center; margin-top: 10px;color: chocolate;">கீழே உள்ள கேள்விகளுக்கு சரியான பதில்களை தேர்ந்தெடுக்கவும். ஒவ்வொரு கேள்விக்கும் ஒரு பதில்தான் சரியானது.</p>
+  
+    <div class="quiz-box" id="quiz"></div>
+
+  <div class="button-box">
+    <button onclick="checkAnswers()">சமர்ப்பி</button>
+    <button class="restart-btn" onclick="restartQuiz()">மீண்டும் தொடங்கு</button>
+  </div>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    const quizData = [
+      { q: "இந்தியாவின் தலைநகர் எது?", options: ["டெல்லி", "மும்பை", "சென்னை", "கொல்கத்தா"], answer: "டெல்லி" },
+      { q: "தமிழ்நாட்டின் தலைநகர் எது?", options: ["மதுரை", "திருச்சி", "சென்னை", "கோயம்புத்தூர்"], answer: "சென்னை" },
+      { q: "இந்திய நாணயத்தின் பெயர் என்ன?", options: ["டாலர்", "ரூபாய்", "யென்", "யூரோ"], answer: "ரூபாய்" },
+      { q: "தாஜ்மஹால் எங்கு உள்ளது?", options: ["டெல்லி", "ஆக்ரா", "ஜெய்ப்பூர்", "மும்பை"], answer: "ஆக்ரா" },
+      { q: "இந்தியாவின் தேசிய விலங்கு எது?", options: ["சிங்கம்", "புலி", "யானை", "மான்"], answer: "புலி" },
+      { q: "இந்தியாவின் தேசிய பறவை எது?", options: ["காகம்", "மயில்", "கிளி", "நாரை"], answer: "மயில்" },
+      { q: "இந்தியாவின் தேசிய மலர் எது?", options: ["ரோஜா", "தாமரை", "சாமந்தி", "செம்பருத்தி"], answer: "தாமரை" },
+      { q: "ஒலிம்பிக் போட்டி எத்தனை ஆண்டுகளுக்கு ஒருமுறை நடக்கும்?", options: ["2", "3", "4", "5"], answer: "4" },
+      { q: "சுதந்திர தினம் எப்போது?", options: ["ஜனவரி 26", "ஆகஸ்ட் 15", "அக்டோபர் 2", "டிசம்பர் 25"], answer: "ஆகஸ்ட் 15" },
+      { q: "குடியரசு தினம் எப்போது?", options: ["ஜனவரி 26", "ஆகஸ்ட் 15", "அக்டோபர் 2", "நவம்பர் 14"], answer: "ஜனவரி 26" }
+      
+    ];
+
+    const quizContainer = document.getElementById("quiz");
+    const resultBox = document.getElementById("result");
+    const progressBar = document.getElementById("progressBar");
+
+    // Render Questions
+    function renderQuiz() {
+      quizContainer.innerHTML = "";
+      quizData.forEach((qItem, index) => {
+        const qBlock = document.createElement("div");
+        qBlock.innerHTML = `
+          <h2>${index+1}. ${qItem.q}</h2>
+          <div class="options" onchange="updateProgress()">
+            ${qItem.options.map(opt => `
+              <div class="option">
+                <input type="radio" name="q${index}" value="${opt}"> ${opt}
+              </div>
+            `).join("")}
+          </div>
+        `;
+        quizContainer.appendChild(qBlock);
+      });
+      resultBox.innerHTML = "";
+      updateProgress(); // reset progress
+    }
+
+    renderQuiz();
+
+    // Check Answers (only total score)
+    function checkAnswers() {
+      let score = 0;
+      quizData.forEach((qItem, index) => {
+        let selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && selected.value === qItem.answer) {
+          score++;
+        }
+      });
+      resultBox.innerHTML = `✅ நீங்கள் ${quizData.length}-ல் ${score} சரியான பதில்கள் கொடுத்துள்ளீர்கள்`;
+    }
+
+    // Restart Quiz
+    function restartQuiz() {
+      renderQuiz();
+      resultBox.innerHTML = ""; // clear score
+    }
+
+    // Update Progress Bar
+    function updateProgress() {
+      let answered = 0;
+      quizData.forEach((qItem, index) => {
+        let selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected) answered++;
+      });
+      let progress = Math.round((answered / quizData.length) * 100);
+      progressBar.style.width = progress + "%";
+      progressBar.textContent = progress + "%";
+    }
+  </script>
+
+</body>
+</html>
+
+
+ 
+
